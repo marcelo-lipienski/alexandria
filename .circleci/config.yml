@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - checkout
-      - run: sudo docker-php-ext-install pdo pdo_pgsql
+      - run: sudo docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && docker-install pdo pdo_pgsql
       - run: sudo docker-php-ext-install zip
 
       # Download and cache dependencies
