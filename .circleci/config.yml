@@ -20,8 +20,8 @@ jobs:
 
     steps:
       - checkout
-      - run: set -ex && apk --no-cache add postgresql-dev
-      - run: sudo docker-install pdo pdo_pgsql
+      - run: apt-get install -y libpq-dev
+      - run: sudo docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && docker-install pdo pdo_pgsql
       - run: sudo docker-php-ext-install zip
 
       # Download and cache dependencies
